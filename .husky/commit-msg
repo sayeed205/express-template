@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+if [ -f pnpm-lock.yaml ]; then
+    pnpm commitlint --edit
+elif [ -f package-lock.json ]; then
+    npx npx --no -- commitlint --edit
+elif [ -f yarn.lock ]; then
+    yarn commitlint --edit
+else
+    echo "error: no lockfile found"
+    exit 1
+fi
