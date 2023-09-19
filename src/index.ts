@@ -6,8 +6,9 @@ moduleAlias.addAliases({
 });
 
 import app from '@/app';
+import { env } from '@/config';
 
-const port = 5000;
+const port = env.server.port;
 
 const server = app.listen(port, () => {
     console.log(`App listening on port ${port}`);
