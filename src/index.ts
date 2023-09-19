@@ -1,4 +1,11 @@
-import app from './app';
+import * as moduleAlias from 'module-alias';
+
+const src = process.env.NODE_ENV === 'development' ? 'src' : __dirname;
+moduleAlias.addAliases({
+    '@': `${src}`,
+});
+
+import app from '@/app';
 
 const port = 5000;
 

@@ -1,9 +1,10 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
+import helmet from 'helmet';
 
 const app: Express = express();
 
-app.get('/', (_req: Request, res: Response) => {
-    res.send('Hello World!');
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
 
 export default app;
